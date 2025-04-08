@@ -26,5 +26,26 @@ public class CustomerTest {
 
 
     }
+
+
+    @Test
+    public void validLastName() {
+        Customer Emre = new Customer("Emre", "Demir", "123456789", "Galway,Atu");
+        assertEquals("Demir", Emre.getLastName());
+    }
+    @Test
+    public void invalidLastName()
+    {
+        Exception ex = assertThrows(IllegalArgumentException.class, () ->
+        {
+            new Customer("Emre", "De", "123456789", "Galway,Atu");
+
+        });
+
+        assertEquals("Last name has to be more than 3 characters.", ex.getMessage());
+
+
+    }
+
 }
 

@@ -66,6 +66,23 @@ public class CustomerTest {
 
     }
 
+    @Test
+    public void validAddress() {
+        Customer Emre = new Customer("Emre", "Demir", "123456789", "Galway,Atu");
+        assertEquals("Galway,Atu", Emre.getAddress());
+    }
+    @Test
+    public void invalidAddress()
+    {
+        Exception ex = assertThrows(IllegalArgumentException.class, () ->
+        {
+            new Customer("Emre", "Demir", "123456789", "Galway");
+
+        });
+
+        assertEquals("Address has to be between 10 to 40 characters.", ex.getMessage());
+
+    }
 
 
 }

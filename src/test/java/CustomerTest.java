@@ -47,5 +47,26 @@ public class CustomerTest {
 
     }
 
+
+    @Test
+    public void validCustomerID() {
+        Customer Emre = new Customer("Emre", "Demir", "123456789", "Galway,Atu");
+        assertEquals("123456789", Emre.getCustomerID());
+    }
+    @Test
+    public void invalidCustomerID()
+    {
+        Exception ex = assertThrows(IllegalArgumentException.class, () ->
+        {
+            new Customer("Emre", "Demir", "12345", "Galway,Atu");
+
+        });
+
+        assertEquals("Customer ID has to be between 8 to 12 characters.", ex.getMessage());
+
+    }
+
+
+
 }
 
